@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-    int restart = 1;
+    int restart = 1; //stores user's choice to restart calculator (1) or not(0)
     
     // do while loop to keep calculaotr running if user chooses
     do {
@@ -15,9 +15,17 @@ int main()
         double c;       // result
     
         cout << "Enter your expression with 2 numbers seperated by spaces (for operation, use + , - , * , or /): " << endl;
-        cin >> a >> operation >> b;
+        
+    //checking if dividing by 0 and prinitng error message if so
+        do {
+            cin >> a >> operation >> b; // take input for a, b, and operation
+            
+            if ((operation == '/') && (b == 0)) {
+                cout << "Error! You can't divide by 0. Try again." << endl;
+            }
+        } while ((operation == '/') && (b == 0));
     
-        // switch block to determine which operation to do based on entered char value
+    // switch block to determine which operation to do based on entered char value
         switch (operation) 
         {
             case '+':
